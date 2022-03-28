@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<News>
+
+<main>
+    <div class="content-main-container">
+        <div class="main-center">
+            @{
+                foreach (var post in Model)
+                {
+                    <div class="news-card">
+                        <div class="news-posted-date">
+                            <div class="posted-day">
+                                <p>@post.PostDate.Substring(post.PostDate.IndexOf(" ") + 2)</p>
+                                <p>@post.PostDate.Substring(0, post.PostDate.IndexOf(" "))</p>
+                            </div>
+                            <div class="posted-time">
+                                <p>@post.PostTime</p>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <img src="~/images/PostsGallery/@post.FileName" alt="Image Here!">
+                        </div>
+                        <div class="post-description">
+                            <p>
+                                <a target="_blank" href="@Url.Action("Detail", "Home", new { id = post.id})">@post.Title</a>
+                            </p>
+                        </div>
+                        <div class="post-attributes">
+                            <div class="post-detail" isClicked="false">
+                                <i class="far fa-thumbs-up"></i>
+                                <span>@post.LikeAmount</span>
+                            </div>
+                            <div class="post-detail" isClicked="false">
+                                <i class="far fa-thumbs-down"></i>
+                                <span>@post.DislikeAmount</span>
+                            </div>
+                            <div class="post-detail">
+                                <i class="far fa-eye"></i>
+                                <span>@post.VisitedAmount</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</main>
+<!-- ======================================================= MAIN NEWS -->
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            //================================================ LIKE
+            $(".post-detail:nth-child(1)").click(function () {
+                let clickedItem = $(this)
+
+                if (clickedItem.attr("isClicked") == "false") {
+
+                    let data_ = {
+                        PostTitle: clickedItem.parent().siblings(".post-description").children().children().text(),
+                        Category: 1
+                    }
+
+                    $.ajax({
+                        url: "/Home/IncreasePostAffect",
+                        data: data_,
+                        dataType: "json",
+
+                        success: function (data) {
+
+                            clickedItem.children("span").text(data.LikeAmount)
+                            clickedItem.siblings().eq(0).children("span").text(data.DislikeAmount)
+                            clickedItem.siblings().eq(1).children("span").text(data.VisitedAmount)
+
+                            clickedItem.css({
+                                "background-color": "green",
+                                "color": "white",
+                                "cursor": "default"
+                            })
+
+                            clickedItem.attr("isClicked", "true")
+                            clickedItem.siblings().attr("isClicked", "true")
+                            clickedItem.siblings().css({ "cursor": "default" })
+
+                            console.log("Liked")
+                        },
+
+                        error: function () {
+                            alert("Cannot Get Data")
+                        }
+                    });
+                }
+            });
+
+            //================================================ DISLIKE
+            $(".post-detail:nth-child(2)").click(function () {
+                let clickedItem = $(this)
+
+                if (clickedItem.attr("isClicked") == "false") {
+
+                    let data_ = {
+                        PostTitle: clickedItem.parent().siblings(".post-description").children().children().text(),
+                        Category: 2
+                    }
+
+                    $.ajax({
+                        url: "/Home/IncreasePostAffect",
+                        data: data_,
+                        dataType: "json",
+
+                        success: function (data) {
+
+                            clickedItem.siblings().eq(0).children("span").text(data.LikeAmount)
+                            clickedItem.children("span").text(data.DislikeAmount)
+                            clickedItem.siblings().eq(1).children("span").text(data.VisitedAmount)
+
+                            clickedItem.css({
+                                "background-color": "red",
+                                "color": "white",
+                                "cursor": "default"
+                            })
+
+                            clickedItem.attr("isClicked", "true")
+                            clickedItem.siblings().attr("isClicked", "true")
+                            clickedItem.siblings().css({ "cursor": "default" })
+
+                            console.log("Disliked")
+                        },
+
+                        error: function () {
+                            alert("Cannot Get Data")
+                        }
+                    });
+                }
+            });
+
+            //================================================ VISITED
+            $(".post-description p a").click(function () {
+                let clickedItem = $(this)
+
+                let data_ = {
+                    PostTitle: clickedItem.text(),
+                    Category: 3
+                }
+
+                $.ajax({
+                    url: "/Home/IncreasePostAffect",
+                    data: data_,
+                    dataType: "json",
+
+                    success: function (data) {
+
+                        clickedItem.parent().parent().siblings(".post-attributes").children(".post-detail:nth-child(1)").children("span").text(data.LikeAmount)
+                        clickedItem.parent().parent().siblings(".post-attributes").children(".post-detail:nth-child(2)").children("span").text(data.DislikeAmount)
+                        clickedItem.parent().parent().siblings(".post-attributes").children(".post-detail:nth-child(3)").children("span").text(data.VisitedAmount)
+
+                        console.log("Visited")
+                    },
+
+                    error: function () {
+                        alert("Cannot Get Data")
+                    }
+                });
+            });
+
+
+        });
+    </script>
+}

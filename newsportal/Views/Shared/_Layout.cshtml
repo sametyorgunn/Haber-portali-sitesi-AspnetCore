@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/8e780d0fb0.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <title>@ViewData["Title"] - Güncel Haber Portalı</title>
+</head>
+<body>
+
+
+    
+    <header>
+        <div class="head-main-container">
+            <div class="head-center-container">
+                <div class="brand-logo-menu">
+                    <i class="fas fa-bars"></i>
+                    <a href="@Url.Action("Index","Home")">NEWS</a>
+                    <div class="toggle-menu">
+                        <i class="fas fa-bars"></i>
+                        <p>Kategoriler</p>
+                    </div>
+                </div>
+                <div class="header-options">
+                    <div class="header-info">
+                        <a href="#">hakkımızda</a>
+                        <a href="#">Reklam</a>
+                    </div>
+                    <div class="social-contact">
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#"><i class="fab fa-android"></i></a>
+                        <a href="#"><i class="fab fa-apple"></i></a>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="ara">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="localization-bar">
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-main-container">
+            <div class="nav-row">
+                <div class="nav-container-center">
+                    <ul>
+                        <li><a href="@Url.Action("Index","Home")"class="selected-nav-section" >anasayfa</a></li>
+                        <li><a href="@Url.Action("hava","Home")">Hava Durumu</a></li>
+                        <li><a href="@Url.Action("Global","Home")">Global</a></li>
+                        <li><a href="@Url.Action("Sport","Home")">Spor</a></li>
+                        <li><a href="@Url.Action("Korona","Home")">Korona Virüs Haberleri</a></li>
+                        <li><a href="@Url.Action("Economy","Home")">Ekonomi</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="slider-area">
+        <div class="slider-container-center">
+            <div class="slider-container">
+                <div class="owl-carousel owl-theme news-carousel">
+                    <div class="item">
+                        <div class="slider-item-container">
+                            <img src="~/images/PostsGallery/football19090a74-63d3-4119-aae9-9c4c6c0bca87.jpg" alt="Cimerlik">
+                            <div class="slider-content">
+                                <div class="date-view-container">
+                                    <div class="slider-date">
+                                        <p>23 Aralık</p>
+                                        <p>19:40</p>
+                                    </div>
+                                    <div class="slider-view">
+                                        <p>7450</p>
+                                    </div>
+                                </div>
+                                <div class="slider-description">
+                                    <p>Derbi nezaman? saat kaçta?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="slider-item-container">
+                            <img src="~/images/PostsGallery/yagislihava.jpg" alt="Rainy">
+                            <div class="slider-content">
+                                <div class="date-view-container">
+                                    <div class="slider-date">
+                                        <p>24 aralık</p>
+                                        <p>13:30</p>
+                                    </div>
+                                    <div class="slider-view">
+                                        <p>5465</p>
+                                    </div>
+                                </div>
+                                <div class="slider-description">
+                                    <p>düzcede kar yagışı bekleniyor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="slider-item-container">
+                            <img src="~/images/PostsGallery/korona.jpg" alt="Rainy">
+                            <div class="slider-content">
+                                <div class="date-view-container">
+                                    <div class="slider-date">
+                                        <p>25 aralık</p>
+                                        <p></p>
+                                    </div>
+                                    <div class="slider-view">
+                                        <p>5465</p>
+                                    </div>
+                                </div>
+                                <div class="slider-description">
+                                    <p>Aşılı olmak koronavirüsü taşımadığımız anlamına gelmiyor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/script.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

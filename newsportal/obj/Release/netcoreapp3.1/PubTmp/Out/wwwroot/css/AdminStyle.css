@@ -1,0 +1,166 @@
+﻿* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+
+
+/* ======================================================= MAIN NEWS */
+.content-main-container {
+    background-color: white;
+    margin-top: 15px;
+}
+
+.content-main-container>h1{
+    text-align: center;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.content-main-container > h1 a {
+    padding: 20px;
+    background-color: #145222;
+    border-radius: 20px;
+    color: white;
+    border: 4px solid #ffc107;
+}
+
+.content-main-container > h1 a:hover {
+    background-color: #23903c;
+    border: 6px solid #ffc107;
+}
+
+.main-center {
+    width: 940px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
+.news-card {
+    width: 300px;
+    position: relative;
+    margin-bottom: 30px;
+    background-color: white;
+    transition: 0.3s;
+    border: 1px solid #454545;
+}
+
+.news-card:hover {
+    box-shadow: 0 0 10px 5px rgba(91, 91, 91, 0.531);
+    transform: translate(10px, -10px);
+}
+
+.news-posted-date {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.news-posted-date p {
+    margin: 0;
+}
+
+.news-posted-date .posted-day {
+    background-color: rgba(24, 148, 160, 0.8);
+    height: 50px;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.news-posted-date .posted-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(43, 70, 94, 0.544);
+    height: 25px;
+    width: 60px;
+}
+
+.post-image {
+    width: 100%;
+    height: 225px;
+}
+
+    .post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.post-description {
+    height: 190px;
+    padding: 15px;
+}
+
+.post-description p {
+    color: #13317F;
+    line-height: normal;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.post-description p a {
+    color: #1331a8;
+}
+
+.post-attributes {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #454545;
+}
+
+.post-detail {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.post-detail a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.post-detail:nth-child(1) a {
+    background-color: red;
+}
+
+.post-detail:nth-child(2) a {
+    background-color: #0078ff;
+}
+
+
+.post-detail:nth-child(2) {
+    border-left: 1px solid #cacaca;
+}
+
+/* ======================================================= MAIN NEWS */

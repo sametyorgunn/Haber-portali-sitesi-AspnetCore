@@ -1,0 +1,57 @@
+﻿@model newsportal.Areas.Admin.Models.EditNewsViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Edit</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <hr />
+    <div class="container">
+        <h4>Create New Post</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <form enctype="multipart/form-data" action="/Admin/Home/Edit" method="post">
+                    @Html.HiddenFor(x => x.id)
+                    @Html.HiddenFor(x => x.FileName)
+                    <div class="form-group">
+                        <label class="control-label" for="Title">Title</label>
+                        @Html.TextAreaFor(x => x.Title, new { @class = "form-control"})
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="FormFile">FormFile</label>
+                        @Html.TextBoxFor(x => x.FormFile, new { @class = "form-control", @accept = "image/*", @type = "file" })
+                        <span class="text-danger field-validation-valid" data-valmsg-for="FormFile" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Change" class="btn btn-primary" />
+                    </div>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8ML0Vzc_waxNnwYKUcvs6G8axLXLq-x3tJG2zL0t4Pv5cykfQtXM7wRwi9UBEDI5crJmSO6y-FQswKzPnNrZjU406UFAxbce9PhDMYZYRy8gGf_DB_b7FY5bA6bJ1cmYNLKiFvWlC1oCgWBp1-bdORQ" />
+                </form>
+            </div>
+            <div>
+                <a href="/Admin/Home/Index">Back to List</a>
+            </div>
+        </div>
+        <h2 class="text-primary mx-auto mt-5">Image of The Current Post</h2>
+        <img src="~/images/PostsGallery/@Model.FileName" alt="Image Here" class="my-5 mx-auto" />
+    </div>
+    <hr />
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>

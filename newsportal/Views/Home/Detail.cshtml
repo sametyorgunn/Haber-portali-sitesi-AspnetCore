@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model News
+
+    <div class="detailed-main-container">
+        <div class="detailed-center">
+            <div class="detailed-post-date">
+                <p>@Model.PostDate</p>
+                <p>@Model.PostTime</p>
+                <p>
+                    <i class="far fa-eye"></i>
+                    <span>@Model.VisitedAmount</span>
+                </p>
+            </div>
+            <div class="detailed-image">
+                <img src="~/images/PostsGallery/@Model.FileName" alt="Image Here!">
+            </div>
+            <div class="detailed-description">
+                <p>@Model.Title</p>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,68 @@
+﻿@model List<newsportal.Models.News>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/8e780d0fb0.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="~/css/AdminStyle.css">
+
+    <title>Admin Home</title>
+</head>
+<body>
+    <main>
+        <div class="content-main-container">
+            <h1>
+                @Html.ActionLink("Create New Post", "Create", "Home", "Admin")
+            </h1>
+            <hr />
+            <div class="main-center">
+                @{
+                    foreach (var post in Model)
+                    {
+                        <div class="news-card">
+                            <div class="news-posted-date">
+                                <div class="posted-day">
+                                    <p>@post.PostDate.Substring(post.PostDate.IndexOf(" ") + 2)</p>
+                                    <p>@post.PostDate.Substring(0, post.PostDate.IndexOf(" "))</p>
+                                </div>
+                                <div class="posted-time">
+                                    <p>@post.PostTime</p>
+                                </div>
+                            </div>
+                            <div class="post-image">
+                                <img src="~/images/PostsGallery/@post.FileName" alt="Image Here!">
+                            </div>
+                            <div class="post-description">
+                                <p>
+                                    <a target="_blank" href="@Url.Action("Detail", "Home", new { id = post.id})">@post.Title</a>
+                                </p>
+                            </div>
+                            <div class="post-attributes">
+                                <div class="post-detail">
+                                    @Html.ActionLink("Delete", "Delete", new { id = post.id }, new { onclick = "return confirm('Are you sure to Delete?')" })
+                                </div>
+                                <div class="post-detail">
+                                    @Html.ActionLink("Edit", "Edit", new { id = post.id })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </main>
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/script.js"></script>
+
+</body>
+</html>
